@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('alerG', ['ionic', 'ngCordova', 'firebase', 'alerG.controllers'])
+angular.module('alerG', ['ionic', 'ngCordova', 'firebase', 'alerG.controllers', 'alerG.services'])
 
 .run(function($ionicPlatform, $rootScope, $firebaseAuth, $firebase, $window, $ionicLoading) {
   $ionicPlatform.ready(function() {

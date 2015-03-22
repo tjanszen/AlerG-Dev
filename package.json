@@ -17,7 +17,7 @@
   ],
   "scripts": {
     "start": "node server/index.js",
-    "localstart": "PORT=8080 nodemon -e js,jade server/index.js",
+    "localstart": "MONGO_URL=mongodb://localhost/alerG-dev PORT=8080 nodemon -e js,jade server/index.js",
     "clean": "rm -rf node_modules && rm -rf public && npm install && bower install && gulp build"
   },
   "license": "MIT",
@@ -31,7 +31,8 @@
     "gulp-minify-css": "^0.3.0",
     "gulp-rename": "^1.2.0",
     "gulp-sass": "^0.7.1",
-    "hapi": "^8.4.0"
+    "hapi": "^8.4.0",
+    "mongoose": "^3.8.25"
   },
   "devDependencies": {
     "bower": "^1.3.3",

@@ -77,7 +77,19 @@ angular.module('alerG.controllers', [])
      }
   }
 ])
-.controller('DashScanCtrl', function($rootScope, $scope, $window, $ionicModal, $firebase, $ionicPlatform, $cordovaBarcodeScanner) {
+.controller('DashScanCtrl', function($rootScope, $scope, $window, $ionicModal, $firebase, $ionicPlatform, $cordovaBarcodeScanner, Scan) {
+
+  $scope.testingScan = function(){
+    console.log('MADE IT TO THE !!TESTING!! BARCODE SCANNER FUNCTION IN CONTROLLER.JS')
+    Scan.scanning('024100788842')
+    .then(function(response){
+      console.log('RESPONSE FROM THE SERVER', response);
+      $scope.productBrand = response.data[0].brand;
+      $scope.productName = response.data[0].product_name;
+      $scope.productImage = response.data[0].image_urls[0];
+    })
+
+  }
 
   $scope.barcodeScan = function(){
     console.log('MADE IT TO THE BARCODE SCANNER FUNCTION IN CONTROLLER.JS')
@@ -87,23 +99,21 @@ angular.module('alerG.controllers', [])
       .then(function(barcodeData) {
         // Success! Barcode data is here
         $rootScope.data = barcodeData.text;
+        //Call the Scan function from the services.js factory
+        Scan.scanning($rootScope.data)
+        .then(function(response){
+          $scope.productBrand = response.data[0].brand;
+          $scope.productName = response.data[0].product_name;
+          $scope.productImage = response.data[0].image_urls[0];
+        })
 
       }, function(error) {
         // An error occurred
-      });
+      })
     });
   }
-
-
-
-
-
 })
+
 .controller('DashResutsCtrl', function($rootScope, $scope, $window, $firebase) {
-
-
-
-
-
 
 });
