@@ -3,15 +3,39 @@
   <button class="button button-clear" ng-click="logout()">Logout</button>
 </ion-header-bar>
 <ion-content class="has-header padding" has-tabs="true" on-refresh="onRefresh()">
-  <h5>Scanner Page</h5>
 
   <button class="button button-clear" ng-click="barcodeScan()">Let's Scan</button>
   <button class="button button-clear" ng-click="testingScan()">TESTING SCAN</button>
   <p>
-    Brand {{productBrand}}
+    {{email}}
   </p>
-  <p>
-    Name {{productName}}
-  </p>
-  <img src="{{productImage}}" alt="" />
+  <div class="list card" ng-show='display'>
+
+      <div class="item">
+        <h2>{{productBrand}}</h2>
+        <p>{{productName}}</p>
+      </div>
+
+      <div class="item item-image">
+        <img ng-src='{{productImage}}'/>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button class="button social-share" ng-click='sendTweet()'>
+            <i class='ion-social-twitter'></i>
+          </button>
+        </div>
+        <div class="col">
+          <button class="button save-button" ng-click='saveProduct()'>
+            <i class='ion-code-download'></i>
+          </button>
+        </div>
+        <div class="col">
+          <button class="button social-share" ng-click='sendFacebook()'>
+            <i class='ion-social-facebook'></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
 </ion-content>

@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('alerG', ['ionic', 'ngCordova', 'firebase', 'alerG.controllers', 'alerG.services'])
 
-.run(function($ionicPlatform, $rootScope, $firebaseAuth, $firebase, $window, $ionicLoading) {
+.run(function($ionicPlatform, $rootScope, $firebaseAuth, $firebase,  $window, $ionicLoading) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)

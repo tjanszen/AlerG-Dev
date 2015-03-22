@@ -18,3 +18,62 @@
 .ion-checkmark-circled.icon-actions.margin{
   margin-right: 35px;
 }
+
+/* Homepage */
+#scan-button  {
+  border: none;
+  display: block;
+  margin: 0 auto;
+  font-size: 50px;
+}
+
+button.button.button-full.button-energized {
+  font-size:30px;
+  font-family: "MoonBold";
+}
+
+#scan-button-icon {
+  font-size: 50px;
+  float: left;
+  margin-top: -4px;
+  margin-left: 15px;
+}
+
+h2 {
+  text-align: center;
+  font-family: "MoonBold";
+}
+
+p {
+  text-align: center;
+  font-family: "MoonLight";
+}
+
+.social-share,
+.save-button{
+  display: block;
+  margin: 0 auto;
+  background: #fff;
+  border: none;
+}
+
+.ion-social-twitter,
+.ion-social-facebook,
+.ion-social-instagram,
+.ion-code-download{
+  display: block;
+  text-align:center;
+  font-size: 30px
+}
+
+.question{
+  width:150px;
+  display: block;
+  margin: 0 auto;
+}
+
+.item-image img:first-child, .item-image .list-img {
+  width: 50%;
+  vertical-align: middle;
+  padding: 20px 0;
+}

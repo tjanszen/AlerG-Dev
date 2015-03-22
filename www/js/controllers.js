@@ -77,16 +77,18 @@ angular.module('alerG.controllers', [])
      }
   }
 ])
-.controller('DashScanCtrl', function($rootScope, $scope, $window, $ionicModal, $firebase, $ionicPlatform, $cordovaBarcodeScanner, Scan) {
 
+.controller('DashScanCtrl', ['$rootScope', '$scope', '$window', '$ionicModal', '$firebase', '$ionicPlatform', '$cordovaBarcodeScanner', 'Scan', function($rootScope, $scope, $window, $ionicModal, $firebase, $ionicPlatform, $cordovaBarcodeScanner, Scan) {
   $scope.testingScan = function(){
     console.log('MADE IT TO THE !!TESTING!! BARCODE SCANNER FUNCTION IN CONTROLLER.JS')
     Scan.scanning('024100788842')
     .then(function(response){
       console.log('RESPONSE FROM THE SERVER', response);
+      $scope.productUPC = '024100788842';
       $scope.productBrand = response.data[0].brand;
       $scope.productName = response.data[0].product_name;
       $scope.productImage = response.data[0].image_urls[0];
+      $scope.display = true
     })
 
   }
@@ -98,6 +100,7 @@ angular.module('alerG.controllers', [])
       .scan()
       .then(function(barcodeData) {
         // Success! Barcode data is here
+        $scope.productUPC = barcodeData.text;
         $rootScope.data = barcodeData.text;
         //Call the Scan function from the services.js factory
         Scan.scanning($rootScope.data)
@@ -112,8 +115,27 @@ angular.module('alerG.controllers', [])
       })
     });
   }
-})
+
+  var URL = 'https://alerg.firebaseio.com';
+  $scope.products = $firebase(new Firebase(URL + '/products'));
+
+  $scope.saveProduct = function(){
+    console.log('MADE IT TO THE SAVEPRODUCT FUNCTION');
+    $scope.products.$add({
+      email: $rootScope.auth.user.email,
+      upc: $scope.productUPC,
+      brand: $scope.productBrand,
+      name: $scope.productName,
+      image: $scope.productImage
+    });
+  }
+
+}])
 
 .controller('DashResutsCtrl', function($rootScope, $scope, $window, $firebase) {
+  var url = 'https://alerg.firebaseio.com/products'
+ $scope.products = $firebase(new Firebase(url));
+
+
 
 });
