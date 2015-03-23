@@ -15,6 +15,12 @@
         <h2>{{productBrand}}</h2>
         <p>{{productName}}</p>
       </div>
+      <div class="" ng-show='glutenFree'>
+        yes!
+      </div>
+      <div class="" ng-show='!glutenFree'>
+        no!
+      </div>
 
       <div class="item item-image">
         <img ng-src='{{productImage}}'/>

@@ -80,13 +80,18 @@ angular.module('alerG.controllers', [])
   }
 ])
 
-.controller('DashScanCtrl', ['$rootScope', '$scope', '$window', '$ionicModal', '$firebase', '$ionicPlatform', '$cordovaBarcodeScanner', 'Scan', function($rootScope, $scope, $window, $ionicModal, $firebase, $ionicPlatform, $cordovaBarcodeScanner, Scan) {
+.controller('DashScanCtrl', ['$rootScope', '$scope', '$window', '$ionicModal', '$firebase', '$ionicPlatform', '$cordovaBarcodeScanner', 'Scan', '$cordovaSocialSharing', function($rootScope, $scope, $window, $ionicModal, $firebase, $ionicPlatform, $cordovaBarcodeScanner, Scan, $cordovaSocialSharing) {
   $scope.testingScan = function(){
     console.log('MADE IT TO THE !!TESTING!! BARCODE SCANNER FUNCTION IN CONTROLLER.JS')
     Scan.scanning('024100788842')
     .then(function(response){
       console.log('RESPONSE FROM THE SERVER', response);
       $scope.productUPC = '024100788842';
+      if($scope.productUPC === "024100788843"){
+        $scope.glutenFree = true;
+      } else{
+        $scope.glutenFree = false;
+      }
       $scope.productBrand = response.data[0].brand;
       $scope.productName = response.data[0].product_name;
       $scope.productImage = response.data[0].image_urls[0];
@@ -103,10 +108,16 @@ angular.module('alerG.controllers', [])
       .then(function(barcodeData) {
         // Success! Barcode data is here
         $scope.productUPC = barcodeData.text;
+        if(barcodeData === "024100788842"){
+          $scope.glutenFree = true;
+        } else{
+          $scope.glutenFree = false;
+        }
         $rootScope.data = barcodeData.text;
         //Call the Scan function from the services.js factory
         Scan.scanning($rootScope.data)
         .then(function(response){
+          $scope.productUPC = $scope.productUPC;
           $scope.productBrand = response.data[0].brand;
           $scope.productName = response.data[0].product_name;
           $scope.productImage = response.data[0].image_urls[0];
@@ -130,13 +141,27 @@ angular.module('alerG.controllers', [])
       upc: $scope.productUPC,
       brand: $scope.productBrand,
       name: $scope.productName,
-      image: $scope.productImage
+      image: $scope.productImage,
+      gFree: $scope.glutenFree
     });
   }
 
   $scope.sendTweet = function(){
+    console.log('MADE IT TO THE SENT TWEET FUNCTION');
     $ionicPlatform.ready(function() {
-      $cordovaSocialSharing.shareViaTwitter($scope.message, $scope.productImage, null);
+      $cordovaSocialSharing.shareViaTwitter('THIS IS THE MESSAGE');
+    });
+  }
+
+  $scope.sendFacebook = function(){
+    $ionicPlatform.ready(function() {
+      $cordovaSocialSharing
+      .shareViaFacebook('this is a message')
+      .then(function(result) {
+        // Success!
+      }, function(err) {
+        // An error occurred. Show a message to the user
+      });
     });
   }
 
