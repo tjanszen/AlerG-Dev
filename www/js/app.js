@@ -52,6 +52,7 @@ angular.module('alerG', ['ionic', 'ngCordova', 'firebase', 'alerG.controllers', 
        if (error) {
          // no action yet.. redirect to default route
          $rootScope.userEmail = null;
+         localStorage.setItem('userEmail', null);
          $window.location.href = '#/auth/signin';
        } else if (user) {
          // user authenticated with Firebase
@@ -61,6 +62,7 @@ angular.module('alerG', ['ionic', 'ngCordova', 'firebase', 'alerG.controllers', 
          // user is logged out
          $rootScope.userEmail = null;
          $window.location.href = '#/auth/signin';
+         localStorage.setItem('userEmail', null);
        }
      });
    }

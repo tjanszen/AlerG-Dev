@@ -18,6 +18,7 @@ angular.module('alerG.controllers', [])
           if (!error) {
             $rootScope.hide();
             $rootScope.userEmail = user.email;
+            localStorage.setItem('userEmail', user.email);
             $window.location.href = ('#/dashboard/scan');
           }
           else {
@@ -58,6 +59,7 @@ angular.module('alerG.controllers', [])
         .then(function (user) {
           $rootScope.hide();
           $rootScope.userEmail = user.email;
+          localStorage.setItem('userEmail', user.email);
           $window.location.href = ('#/dashboard/scan');
         }, function (error) {
           $rootScope.hide();
@@ -116,13 +118,15 @@ angular.module('alerG.controllers', [])
     });
   }
 
-  var URL = 'https://alerg.firebaseio.com';
-  $scope.products = $firebase(new Firebase(URL + '/products'));
+  var URL = 'https://alerg.firebaseio.com/'
+  var userEmail = localStorage.userEmail;
+  userEmail = userEmail.replace(".", ",");
+
+  $rootScope.products = $firebase(new Firebase(URL + userEmail));
 
   $scope.saveProduct = function(){
     console.log('MADE IT TO THE SAVEPRODUCT FUNCTION');
-    $scope.products.$add({
-      email: $rootScope.auth.user.email,
+    $rootScope.products.$add({
       upc: $scope.productUPC,
       brand: $scope.productBrand,
       name: $scope.productName,
@@ -130,12 +134,14 @@ angular.module('alerG.controllers', [])
     });
   }
 
+  $scope.sendTweet = function(){
+    $ionicPlatform.ready(function() {
+      $cordovaSocialSharing.shareViaTwitter($scope.message, $scope.productImage, null);
+    });
+  }
+
 }])
 
 .controller('DashResutsCtrl', function($rootScope, $scope, $window, $firebase) {
-  var url = 'https://alerg.firebaseio.com/products'
- $scope.products = $firebase(new Firebase(url));
-
-
 
 });
