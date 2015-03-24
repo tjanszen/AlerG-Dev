@@ -5,6 +5,8 @@ angular.module('alerG.controllers', [])
         password: ""
       };
       $scope.createUser = function () {
+        console.log('made it to the creator!!!')
+
         var email = this.user.email;
         var password = this.user.password;
 
@@ -121,6 +123,7 @@ angular.module('alerG.controllers', [])
           $scope.productBrand = response.data[0].brand;
           $scope.productName = response.data[0].product_name;
           $scope.productImage = response.data[0].image_urls[0];
+          $scope.display = true
         })
 
       }, function(error) {

@@ -22,6 +22,10 @@
 
 /* login and signup*/
 
+.login-up-logo{
+  margin: 30px auto 0 auto;
+  }
+
 .tab-nav.tabs {
   background: white
 }
@@ -37,7 +41,7 @@ span.tab-title.ng-binding{
   color: black;
 }
 .form-signin-up{
-  margin-top: 40%;
+  margin-top: 5%;
 }
 
 span.input-label.has-input{
