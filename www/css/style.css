@@ -60,6 +60,10 @@ span.tab-title.ng-binding {
   border-bottom:1px solid #b3b3b3;
 }
 
+.tab-item.tab-item-active span{
+  border-bottom: 1px solid #11c1f3;
+}
+
 
 /* Homepage */
 .scan-button-ion{

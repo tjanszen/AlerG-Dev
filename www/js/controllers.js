@@ -41,7 +41,7 @@ angular.module('alerG.controllers', [])
   ])
   .controller('SignInCtrl', ['$scope', '$rootScope', '$firebaseAuth', '$window', function ($scope, $rootScope, $firebaseAuth, $window) {
      // check session
-     console.log('in the SignIn Controller')
+    //  console.log('in the SignIn Controller')
     //  $rootScope.checkoutSession();
      $scope.user = {
         email: "",
