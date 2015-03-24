@@ -5,7 +5,7 @@ angular.module('alerG.controllers', [])
         password: ""
       };
       $scope.createUser = function () {
-        console.log('made it to the creator!!!')
+        console.log('CreateUser was called')
 
         var email = this.user.email;
         var password = this.user.password;
@@ -41,12 +41,18 @@ angular.module('alerG.controllers', [])
   ])
   .controller('SignInCtrl', ['$scope', '$rootScope', '$firebaseAuth', '$window', function ($scope, $rootScope, $firebaseAuth, $window) {
      // check session
-     $rootScope.checkoutSession();
+     console.log('in the SignIn Controller')
+    //  $rootScope.checkoutSession();
      $scope.user = {
         email: "",
         password: ""
      };
+     $scope.createUser = function(){
+       console.log('CreateUser was called')
+     }
+
      $scope.validateUser = function () {
+       console.log('validateUser was called')
         $rootScope.show('Please wait.. Authenticating');
         var email = this.user.email;
         var password = this.user.password;
