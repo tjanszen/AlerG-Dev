@@ -19,34 +19,75 @@
   margin-right: 35px;
 }
 
-/* Homepage */
-#scan-button  {
+
+/* login and signup*/
+
+.tab-nav.tabs {
+  background: white
+}
+
+label.item.item-input.item-floating-label.signin-up {
   border: none;
-  display: block;
-  margin: 0 auto;
-  font-size: 50px;
+  border-bottom: 1px solid #b3b3b3;
 }
 
-button.button.button-full.button-energized {
-  font-size:30px;
-  font-family: "MoonBold";
+i.icon.ion-lock-combination,
+i.icon.ion-person-add,
+span.tab-title.ng-binding{
+  color: black;
+}
+.form-signin-up{
+  margin-top: 40%;
 }
 
-#scan-button-icon {
-  font-size: 50px;
-  float: left;
-  margin-top: -4px;
-  margin-left: 15px;
+span.input-label.has-input{
+  color:#11c1f3;
 }
 
-h2 {
-  text-align: center;
-  font-family: "MoonBold";
+input.ng-valid.ng-dirty.ng-valid-parse.ng-touched,
+input.ng-pristine.ng-untouched.ng-valid {
+  color: Black;
 }
 
-p {
-  text-align: center;
-  font-family: "MoonLight";
+span.tab-title.ng-binding {
+  font-size: 14px;
+  color: #b3b3b3;
+  padding-bottom: 5px;
+  border-bottom:1px solid #b3b3b3;
+}
+
+
+/* Homepage */
+.scan-button-ion{
+  font-size: 30px;
+  margin-top: 10px;s
+}
+.scan-button-text{
+  font-size:24px;
+}
+
+.card{
+  box-shadow: none;
+}
+
+.item.item-image{
+  padding: 20px 0px;
+  position: relative;
+}
+
+.scan-sign{
+  position:absolute;
+  width:100px;
+  top:20px;;
+  left:22%;
+}
+
+.item p.scan-sign-text-false{
+  color:#e94949;
+}
+
+.item p.scan-sign-text-true{
+  color:#42d176;
 }
 
 .social-share,
@@ -66,14 +107,32 @@ p {
   font-size: 30px
 }
 
-.question{
-  width:150px;
-  display: block;
-  margin: 0 auto;
-}
-
 .item-image img:first-child, .item-image .list-img {
   width: 50%;
   vertical-align: middle;
   padding: 20px 0;
+}
+
+
+/* Display Results Page */
+
+.results-name,
+.results-upc,
+.results-gf{
+  text-align:left;
+  font-family: "MoonLight";
+}
+
+.results-brand{
+  text-align:left;
+  font-family: "MoonBold";
+}
+
+.scan-brand,
+.scan-name{
+  text-align: left;
+}
+
+.scan-sign{
+  width: 200px;
 }

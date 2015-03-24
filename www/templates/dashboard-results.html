@@ -2,11 +2,17 @@
   <h1 class="title">Results</h1>
   <button class="button button-clear" ng-click="logout()">Logout</button>
 </ion-header-bar>
-<ion-content class="has-header padding" has-tabs="true" on-refresh="onRefresh()">
-  <h5>Results Page</h5>
-  <h5>{{productEmail}}</h5>
-  <ul ng-repeat='product in products'>
-    <li>{{product.name}}</li>
-    <li>{{product.brand}}</li>
-  </ul>
+<ion-content  class="has-header padding" has-tabs="true" on-refresh="onRefresh()">
+
+  <div class="list card">
+    <a class="item item-thumbnail-left" href="#" ng-repeat='product in products'>
+      <img src="{{product.image}}">
+      <h2 class='results-brand'>{{product.brand}}</h2>
+      <p class='results-name'>{{product.name}}</p>
+      <p class='results-upc'>UPC: {{product.upc}}</p>
+      <p class='results-gf' ng-show='{{product.gFree}}'>Gluten Free!</p>
+      <p class='results-gf' ng-show='!{{product.gFree}}'>NOT Gluten Free</p>
+    </a>
+  </div>
+
 </ion-content>

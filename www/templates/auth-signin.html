@@ -1,18 +1,16 @@
-<ion-header-bar class="bar-positive">
-  <h1 class="title">Sign In</h1>
+<ion-header-bar class="header-signin-up">
+  <h1 class="title h1-signin-up"></h1>
 </ion-header-bar>
-<ion-content class="has-header padding">
-  <div class="list">
-    <label class="item item-input">
+<ion-content id='signin-page' class="has-header padding">
+  <div class="list form-signin-up animated slideInLeft">
+    <label class="item item-input item-floating-label signin-up">
       <span class="input-label">Email</span>
-      <input type="text" ng-model="user.email">
+      <input type="text" placeholder="Email" ng-model="user.email">
     </label>
-    <label class="item item-input">
+    <label class="item item-input item-floating-label signin-up">
       <span class="input-label">Password</span>
-      <input type="password" ng-model="user.password">
-    </label>
-    <label class="item item-input">
-      <button class="button button-block button-positive" ng-click="validateUser()">Sign In</button>
+      <input type="password" placeholder="Password" ng-model="user.password">
     </label>
   </div>
+  <button class="button button-block button-outline button-calm animated fadeInUp" ng-click="validateUser()">Sign In</button>
 </ion-content>
