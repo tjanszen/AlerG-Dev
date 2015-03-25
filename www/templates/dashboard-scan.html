@@ -6,9 +6,38 @@
 </ion-header-bar>
 <ion-content class="has-header padding" has-tabs="true" on-refresh="onRefresh()">
 
-  <button class="button button-block button-outline button-calm" ng-click="barcodeScan()">
+  <button class="button button-block button-outline button-calm " ng-click="barcodeScan()">
     <span class='scan-button-text'>Scan Barcode Now!</span>
   </button>
+
+  <!-- The Display Before a Product is Scanned -->
+  <div class="" ng-show='!display'>
+    <div class="card">
+      <div id='step-1' class="item item-text-wrap dashboard-instructions-cards">
+        <div class="row">
+          <div class="col col-25">
+            <h1 class='card-number'>1</h1>
+          </div>
+          <div id='scan' class="col col-75">
+            <h1 class='card-desc'>You Scan</h1>
+            <i id='scan-fa' class="fa fa-barcode fa-2x"></i>
+          </div>
+        </div>
+      </div>
+      <div id='step-2' class="item item-text-wrap dashboard-instructions-cards">
+        <div class="row">
+          <div class="col col-25">
+            <h1 class='card-number'>2</h1>
+          </div>
+          <div id=database class="col col-75">
+            <h1 class='card-desc'> We Check</h1>
+            <i id='database-fa' class="fa fa-database fa-2x"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- The Display After a Product is Scanned -->
   <div class="list card" ng-show='display'>
 
       <div class="item item-avatar">
@@ -19,10 +48,10 @@
 
       <div class="item item-image">
         <img src="{{productImage}}" alt="" />
-        <img class='scan-sign' ng-show='!glutenFree' ng-src='http://www.clipartbest.com/cliparts/BdT/6Xx/BdT6XxLi9.png'/>
-        <img class='scan-sign' ng-show='glutenFree' ng-src='http://www.clker.com/cliparts/6/S/W/2/g/t/transparent-red-no-circle-hi.png'/>
-        <p class='scan-sign-text-false' ng-show='glutenFree'>NOT GLUTEN FREE</p>
-        <p class='scan-sign-text-true' ng-show='!glutenFree'>GLUTEN FREE</p>
+        <img class='scan-sign' ng-show='glutenFree' ng-src='http://www.clipartbest.com/cliparts/BdT/6Xx/BdT6XxLi9.png'/>
+        <img class='scan-sign' ng-show='!glutenFree' ng-src='http://www.clker.com/cliparts/6/S/W/2/g/t/transparent-red-no-circle-hi.png'/>
+        <p class='scan-sign-text-false' ng-show='!glutenFree'>NOT GLUTEN FREE</p>
+        <p class='scan-sign-text-true' ng-show='glutenFree'>GLUTEN FREE</p>
       </div>
       <div class="row">
         <div class="col">
@@ -46,10 +75,3 @@
     <button class="button button-clear" ng-click="testingScan()">T!</button>
 
 </ion-content>
-
-<!-- <div class="" ng-show='glutenFree'>
-  yes!
-</div>
-<div class="" ng-show='!glutenFree'>
-  no!
-</div> -->

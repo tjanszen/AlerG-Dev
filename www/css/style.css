@@ -1,3 +1,10 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: lightgrey;
+  font-family: 'Open Sans', sans-serif;
+}
+
 /* Empty. Add your own CSS if you like */
 .margin {
   margin-left: 9px;
@@ -78,6 +85,65 @@ span.tab-title.ng-binding {
   box-shadow: none;
 }
 
+#step-1,
+#step-2,
+#step-3{
+  border-bottom: none;
+}
+
+.card-number{
+  color: grey;
+  border-right: 1px solid #dfdfdf;
+  text-align: center;
+}
+
+.item-text-wrap{
+  border: none;
+}
+
+h1.card-desc{
+  color: grey;
+  padding-left: 15px;
+  margin-top:7px;
+  font-size: 25px;
+}
+
+#scan,
+#database,
+#bookmark{
+  position: relative;
+}
+
+#scan-fa,
+#database-fa,
+#bookmark-fa{
+  position: absolute;
+}
+
+#scan-fa{
+  top: 15px;
+  left: 150px;
+}
+
+#database-fa{
+  top: 15px;
+  left: 160px;
+}
+
+#bookmark-fa{
+  top: 15px;
+  left: 150px;
+}
+
+p.card-p{
+  color: white;
+  text-transform: uppercase;
+}
+
+.card-images{
+  width: 50px;
+}
+
 .item.item-image{
   padding: 20px 0px;
   position: relative;
@@ -121,6 +187,14 @@ span.tab-title.ng-binding {
   padding: 20px 0;
 }
 
+.tab-item.tab-item-active i{
+  color:#11c1f3;
+}
+
+#terms-cond{
+  text-align:center;
+  color: #e94949;
+}
 
 /* Display Results Page */
 
@@ -128,12 +202,11 @@ span.tab-title.ng-binding {
 .results-upc,
 .results-gf{
   text-align:left;
-  font-family: "MoonLight";
+
 }
 
 .results-brand{
   text-align:left;
-  font-family: "MoonBold";
 }
 
 .scan-brand,
@@ -143,4 +216,12 @@ span.tab-title.ng-binding {
 
 .scan-sign{
   width: 200px;
+}
+
+#no-gf{
+  color:#e94949;
+}
+
+#yes-gf{
+  color: #42d176;
 }

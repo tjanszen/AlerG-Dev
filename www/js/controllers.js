@@ -47,9 +47,6 @@ angular.module('alerG.controllers', [])
         email: "",
         password: ""
      };
-     $scope.createUser = function(){
-       console.log('CreateUser was called')
-     }
 
      $scope.validateUser = function () {
        console.log('validateUser was called')
@@ -91,10 +88,11 @@ angular.module('alerG.controllers', [])
 .controller('DashScanCtrl', ['$rootScope', '$scope', '$window', '$ionicModal', '$firebase', '$ionicPlatform', '$cordovaBarcodeScanner', 'Scan', '$cordovaSocialSharing', function($rootScope, $scope, $window, $ionicModal, $firebase, $ionicPlatform, $cordovaBarcodeScanner, Scan, $cordovaSocialSharing) {
   $scope.testingScan = function(){
     console.log('MADE IT TO THE !!TESTING!! BARCODE SCANNER FUNCTION IN CONTROLLER.JS')
-    Scan.scanning('024100788842')
+    $scope.display = false;
+    Scan.scanning('028400160551')
     .then(function(response){
       console.log('RESPONSE FROM THE SERVER', response);
-      $scope.productUPC = '024100788842';
+      $scope.productUPC = '024100788843';
       if($scope.productUPC === "024100788843"){
         $scope.glutenFree = true;
       } else{
@@ -103,7 +101,8 @@ angular.module('alerG.controllers', [])
       $scope.productBrand = response.data[0].brand;
       $scope.productName = response.data[0].product_name;
       $scope.productImage = response.data[0].image_urls[0];
-      $scope.display = true
+      $scope.display = true;
+      console.log($scope.display);
     })
 
   }
@@ -116,7 +115,7 @@ angular.module('alerG.controllers', [])
       .then(function(barcodeData) {
         // Success! Barcode data is here
         $scope.productUPC = barcodeData.text;
-        if(barcodeData === "024100788842"){
+        if(barcodeData.text === "024100788842"){
           $scope.glutenFree = true;
         } else{
           $scope.glutenFree = false;
@@ -153,6 +152,10 @@ angular.module('alerG.controllers', [])
       image: $scope.productImage,
       gFree: $scope.glutenFree
     });
+  }
+
+  $scope.isGlutenFree = function() {
+    
   }
 
   $scope.sendTweet = function(){
