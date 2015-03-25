@@ -113,11 +113,11 @@ angular.module('alerG.controllers', [])
   $scope.testingScan = function(){
     console.log('MADE IT TO THE !!TESTING!! BARCODE SCANNER FUNCTION IN CONTROLLER.JS')
     $scope.display = false;
-    Scan.scanning('028400160551')
+    Scan.scanning('024100788842')
     .then(function(response){
       console.log('RESPONSE FROM THE SERVER', response);
-      $scope.productUPC = '024100788843';
-      if($scope.productUPC === "024100788843"){
+      $scope.productUPC = '024100788842';
+      if($scope.productUPC === "024100788842"){
         $scope.glutenFree = true;
       } else{
         $scope.glutenFree = false;
@@ -204,9 +204,5 @@ angular.module('alerG.controllers', [])
 }])
 
 .controller('DashResutsCtrl', function($rootScope, $scope, $window, $firebase) {
-
-})
-
-.controller('TermsCtrl', function($rootScope, $scope, $window, $firebase) {
 
 });
