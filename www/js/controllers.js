@@ -1,5 +1,17 @@
 angular.module('alerG.controllers', [])
-  .controller('SignUpCtrl', ['$scope', '$rootScope', '$firebaseAuth', '$window', function ($scope, $rootScope, $firebaseAuth, $window) {
+  .controller('SignUpCtrl', ['$scope', '$rootScope', '$firebaseAuth', '$window', '$ionicModal', function ($scope, $rootScope, $firebaseAuth, $window, $ionicModal) {
+
+    //Popup modal for terms and conditions
+    $ionicModal.fromTemplateUrl('templates/modal.html', function($ionicModal) {
+       $scope.modal = $ionicModal;
+     }, {
+       // Use our scope for the scope of the modal to keep it simple
+       scope: $scope,
+       // The animation we want to use for the modal entrance
+       animation: 'slide-in-up'
+
+     });
+
       $scope.user = {
         email: "",
         password: ""
@@ -39,8 +51,20 @@ angular.module('alerG.controllers', [])
       }
     }
   ])
-  .controller('SignInCtrl', ['$scope', '$rootScope', '$firebaseAuth', '$window', function ($scope, $rootScope, $firebaseAuth, $window) {
-     // check session
+  .controller('SignInCtrl', ['$scope', '$rootScope', '$firebaseAuth', '$window', '$ionicModal', function ($scope, $rootScope, $firebaseAuth, $window, $ionicModal) {
+
+    //Popup modal for terms and conditions
+    $ionicModal.fromTemplateUrl('templates/modal.html', function($ionicModal) {
+       $scope.modal = $ionicModal;
+     }, {
+       // Use our scope for the scope of the modal to keep it simple
+       scope: $scope,
+       // The animation we want to use for the modal entrance
+       animation: 'slide-in-up'
+
+     });
+
+    // check session
     //  console.log('in the SignIn Controller')
     //  $rootScope.checkoutSession();
      $scope.user = {
@@ -155,7 +179,7 @@ angular.module('alerG.controllers', [])
   }
 
   $scope.isGlutenFree = function() {
-    
+
   }
 
   $scope.sendTweet = function(){
@@ -180,5 +204,9 @@ angular.module('alerG.controllers', [])
 }])
 
 .controller('DashResutsCtrl', function($rootScope, $scope, $window, $firebase) {
+
+})
+
+.controller('TermsCtrl', function($rootScope, $scope, $window, $firebase) {
 
 });

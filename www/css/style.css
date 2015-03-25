@@ -71,6 +71,11 @@ span.tab-title.ng-binding {
   border-bottom: 1px solid #11c1f3;
 }
 
+#terms-cond{
+  display: block;
+  margin: 0 auto;
+}
+
 
 /* Homepage */
 .scan-button-ion{
@@ -189,11 +194,6 @@ p.card-p{
 
 .tab-item.tab-item-active i{
   color:#11c1f3;
-}
-
-#terms-cond{
-  text-align:center;
-  color: #e94949;
 }
 
 /* Display Results Page */
