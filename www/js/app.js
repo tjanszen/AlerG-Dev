@@ -81,6 +81,7 @@ angular.module('alerG', ['ionic', 'ngCordova', 'firebase', 'alerG.controllers', 
     .state('dashboard.check', {url: '/check', views: {'dashboard-scan': {templateUrl: 'templates/dashboard-check.html', controller: 'DashCheckCtrl'}}})
     .state('dashboard.match', {url: '/match', views: {'dashboard-scan': {templateUrl: 'templates/dashboard-match.html', controller: 'DashMatchCtrl'}}})
     .state('dashboard.review', {url: '/review', views: {'dashboard-scan': {templateUrl: 'templates/dashboard-review.html', controller: 'DashReviewCtrl'}}})
+    .state('dashboard.confirm', {url: '/confirm', views: {'dashboard-scan': {templateUrl: 'templates/dashboard-confirm.html', controller: 'DashConfirmCtrl'}}})
 
     .state('dashboard.results', {url: '/results', views: {'dashboard-results': {templateUrl: 'templates/dashboard-results.html', controller: 'DashResutsCtrl'}}})
 

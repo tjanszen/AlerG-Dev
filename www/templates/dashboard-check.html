@@ -11,11 +11,24 @@
         <h2 class='scan-brand'>{{productBrand}}</h2>
         <p class='scan-name'>{{productName}}</p>
       </div>
-
-      <div class="item item-image">
-        <img src="{{productImage}}" alt="" />
-      </div>
   </div>
+  
+    <ul class='list'>
+      <li class="item item-checkbox">
+        <label class="checkbox">
+         <input type="checkbox" ng-click='reviewProduct(true)'>
+       </label>
+       Gluten Free
+      </li>
+      <li class="item item-checkbox">
+        <label class="checkbox">
+         <input type="checkbox" ng-click='reviewProduct(false)'>
+       </label>
+       NOT Gluten Free
+      </li>
+    </ul>
+
+
   <p>
     Please check if this is gluten free!
   </p>

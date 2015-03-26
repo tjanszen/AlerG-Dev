@@ -257,8 +257,30 @@ angular.module('alerG.controllers', [])
 
 })
 
-.controller('DashCheckCtrl', function($rootScope, $scope, $window, $firebase) {
+.controller('DashCheckCtrl', function($rootScope, $scope, $state, $window, $firebase, $ionicPlatform, $ionicPopup, $timeout) {
 
+  $scope.reviewProduct = function(value){
+    $rootScope.productGF = value;
+    $state.go('dashboard.confirm');
+  }
+
+
+})
+
+.controller('DashConfirmCtrl', function($rootScope, $scope, $state, $window, $firebase) {
+
+  $scope.confirmProduct = function(){
+    console.log('we need to update the product with checked of', $rootScope.productGF)
+    $rootScope.fb.$add({
+      upc: $rootScope.productUPC,
+      brand: $rootScope.productBrand,
+      name: $rootScope.productName,
+      image: $rootScope.productImage,
+      gFree: $rootScope.productGF,
+      checked: false
+    });
+    $state.go('dashboard.scan')
+  }
 })
 
 .controller('DashMatchCtrl', function($rootScope, $scope, $window, $firebase) {
