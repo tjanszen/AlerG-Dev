@@ -1,0 +1,25 @@
+<ion-header-bar>
+  <h1 class="title">LOGO HERE</h1>
+  <button class="button button-clear" ng-click="logout()">
+    <i class="icon ion-android-exit"></i>
+  </button>
+</ion-header-bar>
+<ion-content  class="has-header padding" has-tabs="true" on-refresh="onRefresh()">
+  <div class="list card">
+      <div class="item item-avatar">
+        <img class=scan-image src="{{productImage}}">
+        <h2 class='scan-brand'>{{productBrand}}</h2>
+        <p class='scan-name'>{{productName}}</p>
+      </div>
+
+      <div class="item item-image">
+        <img src="{{productImage}}" alt="" />
+      </div>
+  </div>
+  <p>
+    Please check if this is gluten free!
+  </p>
+  <p>
+    How do I do this?
+  </p>
+</ion-content>

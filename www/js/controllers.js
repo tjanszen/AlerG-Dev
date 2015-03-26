@@ -109,24 +109,54 @@ angular.module('alerG.controllers', [])
   }
 ])
 
-.controller('DashScanCtrl', ['$rootScope', '$scope', '$window', '$ionicModal', '$firebase', '$ionicPlatform', '$cordovaBarcodeScanner', 'Scan', '$cordovaSocialSharing', function($rootScope, $scope, $window, $ionicModal, $firebase, $ionicPlatform, $cordovaBarcodeScanner, Scan, $cordovaSocialSharing) {
+.controller('DashScanCtrl', ['$rootScope', '$scope', '$state', '$window', '$ionicModal', '$firebase', '$ionicPlatform', '$cordovaBarcodeScanner', 'Scan', '$cordovaSocialSharing', function($rootScope, $scope, $state, $window, $ionicModal, $firebase, $ionicPlatform, $cordovaBarcodeScanner, Scan, $cordovaSocialSharing) {
+
+  //Create database for all scanned products
+
+  $rootScope.ref = new Firebase("https://alerg.firebaseio.com/products");
+  $rootScope.fb = $firebase($rootScope.ref);
+
+
   $scope.testingScan = function(){
-    console.log('MADE IT TO THE !!TESTING!! BARCODE SCANNER FUNCTION IN CONTROLLER.JS')
-    $scope.display = false;
-    Scan.scanning('024100788842')
+    // Scan.scanning('024100788842')
+    Scan.scanning('044000027964')
     .then(function(response){
-      console.log('RESPONSE FROM THE SERVER', response);
-      $scope.productUPC = '024100788842';
-      if($scope.productUPC === "024100788842"){
-        $scope.glutenFree = true;
-      } else{
-        $scope.glutenFree = false;
-      }
-      $scope.productBrand = response.data[0].brand;
-      $scope.productName = response.data[0].product_name;
-      $scope.productImage = response.data[0].image_urls[0];
-      $scope.display = true;
-      console.log($scope.display);
+      $rootScope.productBrand = response.data[0].brand;
+      $rootScope.productName = response.data[0].product_name;
+      $rootScope.productImage = response.data[0].image_urls[0];
+      //grab all of the products from the database
+      $rootScope.ref.on("value", function(snapshot) {
+        snapshot.forEach(function(data){
+          //check to see if the UPC is in the database
+          if('044000027964' === data.val().upc){
+            // console.log('does 024100788843 === ' + data.val().upc)
+            // console.log('the upc codes do match')
+            //check to see if the item has been reviewed and approved for Gluten Free Status
+            if(data.val().checked){
+              //go to the state to display the Gluten Free Status
+              // console.log('the value of CHECKED IS ', data.val().checked);
+              $rootScope.productGF = data.val().gFree
+              $state.go('dashboard.match');
+              return true;
+            } else{
+              //let the user know this item is bring reviewed
+              // console.log('this item is being reviewed');
+              // console.log('the value of CHECKED IS ', data.val().checked);
+              $state.go('dashboard.review');
+              return true;
+            };
+          } else{
+            // console.log('the item is not in the database')
+            // console.log('does 024100788843 === ' + data.val().upc)
+            $state.go('dashboard.check');
+
+          }
+
+
+        })
+      }, function(errorObject){
+        console.log(errorObject.code);
+      })
     })
 
   }
@@ -138,23 +168,43 @@ angular.module('alerG.controllers', [])
       .scan()
       .then(function(barcodeData) {
         // Success! Barcode data is here
-        $scope.productUPC = barcodeData.text;
-        if(barcodeData.text === "024100788842"){
-          $scope.glutenFree = true;
-        } else{
-          $scope.glutenFree = false;
-        }
-        $rootScope.data = barcodeData.text;
+        $rootScope.productUPC = barcodeData.text;
         //Call the Scan function from the services.js factory
-        Scan.scanning($rootScope.data)
+        Scan.scanning($rootScope.productUPC)
         .then(function(response){
-          $scope.productUPC = $scope.productUPC;
-          $scope.productBrand = response.data[0].brand;
-          $scope.productName = response.data[0].product_name;
-          $scope.productImage = response.data[0].image_urls[0];
-          $scope.display = true
+          $rootScope.productBrand = response.data[0].brand;
+          $rootScope.productName = response.data[0].product_name;
+          $rootScope.productImage = response.data[0].image_urls[0];
+          //grab all of the products from the database
+          $rootScope.ref.on("value", function(snapshot){
+            snapshot.forEach(function(data){
+              if($rootScope.productUPC === data.val().upc){
+                // console.log('does 024100788843 === ' + data.val().upc)
+                // console.log('the upc codes do match')
+                //check to see if the item has been reviewed and approved for Gluten Free Status
+                if(data.val().checked){
+                  //go to the state to display the Gluten Free Status
+                  // console.log('the value of CHECKED IS ', data.val().checked);
+                  $rootScope.productGF = data.val().gFree
+                  $state.go('dashboard.match');
+                  return true;
+                } else{
+                  //let the user know this item is bring reviewed
+                  // console.log('this item is being reviewed');
+                  // console.log('the value of CHECKED IS ', data.val().checked);
+                  $state.go('dashboard.review');
+                  return true;
+                };
+              } else{
+                // console.log('the item is not in the database')
+                // console.log('does 024100788843 === ' + data.val().upc)
+                $state.go('dashboard.check');
+              }
+            })
+          }, function(errorObject){
+            console.log(errorObject)
+          })
         })
-
       }, function(error) {
         // An error occurred
       })
@@ -170,11 +220,11 @@ angular.module('alerG.controllers', [])
   $scope.saveProduct = function(){
     console.log('MADE IT TO THE SAVEPRODUCT FUNCTION');
     $rootScope.products.$add({
-      upc: $scope.productUPC,
-      brand: $scope.productBrand,
-      name: $scope.productName,
-      image: $scope.productImage,
-      gFree: $scope.glutenFree
+      upc: $rootScope.productUPC,
+      brand: $rootScope.productBrand,
+      name: $rootScope.productName,
+      image: $rootScope.productImage,
+      gFree: $rootScope.productGF
     });
   }
 
@@ -204,5 +254,17 @@ angular.module('alerG.controllers', [])
 }])
 
 .controller('DashResutsCtrl', function($rootScope, $scope, $window, $firebase) {
+
+})
+
+.controller('DashCheckCtrl', function($rootScope, $scope, $window, $firebase) {
+
+})
+
+.controller('DashMatchCtrl', function($rootScope, $scope, $window, $firebase) {
+
+})
+
+.controller('DashReviewCtrl', function($rootScope, $scope, $window, $firebase) {
 
 });
