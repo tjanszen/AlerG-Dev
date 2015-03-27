@@ -1,10 +1,27 @@
 <ion-header-bar>
-  <h1 class="title">LOGO HERE</h1>
+  <h1 class="title">ALERG</h1>
   <button class="button button-clear" ng-click="logout()">
     <i class="icon ion-android-exit"></i>
   </button>
 </ion-header-bar>
 <ion-content  class="has-header padding" has-tabs="true" on-refresh="onRefresh()">
+
+  <div class="list card">
+    <h4 id='check-title'>We Need Your Help!</h4>
+    <p id='check-paragraph1' class='check-paragraphs'>
+      This item is not in AlerG Database. But you can add this to our database by checking the label and submitting!
+    </p>
+    <p class='check-paragraphs'>
+      <span class='check-steps'>Step 1:</span> Check the product for the <span>Gluten Free Certificate</span>
+    </p>
+    <p class='check-paragraphs'>
+      <span class='check-steps'>Step 2:</span> Click the option below!
+    </p>
+    <p class='check-paragraphs'>
+      <span class='check-steps'>Step 3:</span> AlerG will review and approve in ASAP!
+    </p>
+
+  </div>
   <div class="list card">
       <div class="item item-avatar">
         <img class=scan-image src="{{productImage}}">
@@ -13,34 +30,16 @@
       </div>
   </div>
 
-  <button class="button button-block button-outline button-calm " ng-click="reviewProduct(true)">
+  <button class="button button-block button-outline button-calm " ng-click="confirmProduct(true)">
     <span class='scan-button-text'>Gluten Free</span>
   </button>
 
-  <button class="button button-block button-outline button-calm " ng-click="reviewProduct(false)">
+  <button class="button button-block button-outline button-calm " ng-click="confirmProduct(false)">
     <span class='scan-button-text'>Not Gluten Free</span>
   </button>
 
-    <!-- <ul class='list'>
-      <li class="item item-checkbox">
-        <label class="checkbox">
-         <input ng-model='checkbox1' type="checkbox" ng-click='reviewProduct(true)'>
-       </label>
-       Gluten Free
-      </li>
-      <li class="item item-checkbox">
-        <label class="checkbox">
-         <input ng-model='checkbox2' type="checkbox" ng-click='reviewProduct(false)'>
-       </label>
-       NOT Gluten Free
-      </li>
-    </ul> -->
+  <button class="button button-block button-outline button-calm " ng-click="confirmProduct(false)">
+    <span class='scan-button-text'>I'm Not Sure</span>
+  </button>
 
-
-  <p>
-    Please check if this is gluten free!
-  </p>
-  <p>
-    How do I do this?
-  </p>
 </ion-content>

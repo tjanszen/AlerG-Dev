@@ -118,8 +118,8 @@ angular.module('alerG.controllers', [])
 
 
   $scope.testingScan = function(){
-    Scan.scanning('041196891492')
-    // Scan.scanning('044000027964')
+    // Scan.scanning('041196891492')
+    Scan.scanning('044000027964')
     .then(function(response){
       $rootScope.productBrand = response.data[0].brand;
       $rootScope.productName = response.data[0].product_name;
@@ -127,12 +127,12 @@ angular.module('alerG.controllers', [])
       if(response.data[0].image_urls){
         $rootScope.productImage = response.data[0].image_urls[0];
       }
-      $rootScope.productUPC = '041196891492';
+      $rootScope.productUPC = '044000027964';
       //grab all of the products from the database
       $rootScope.ref.on("value", function(snapshot) {
         snapshot.forEach(function(data){
           //check to see if the UPC is in the database
-          if('041196891492' === data.val().upc){
+          if('044000027964' === data.val().upc){
             // console.log('does 024100788843 === ' + data.val().upc)
             console.log('the upc codes do match')
             //check to see if the item has been reviewed and approved for Gluten Free Status
@@ -249,18 +249,8 @@ angular.module('alerG.controllers', [])
 
 .controller('DashCheckCtrl', function($rootScope, $scope, $state, $window, $firebase, $ionicPlatform, $ionicPopup, $timeout) {
 
-  $scope.reviewProduct = function(value){
+  $scope.confirmProduct = function(value){
     $rootScope.productGF = value;
-    $state.go('dashboard.confirm');
-  }
-
-
-})
-
-.controller('DashConfirmCtrl', function($rootScope, $scope, $state, $window, $firebase) {
-
-  $scope.confirmProduct = function(){
-    console.log('we need to update the product with checked of', $rootScope.productGF);
     $rootScope.fb.$add({
       upc: $rootScope.productUPC,
       brand: $rootScope.productBrand,
@@ -269,6 +259,14 @@ angular.module('alerG.controllers', [])
       gFree: $rootScope.productGF,
       checked: false
     });
+    $state.go('dashboard.confirm')
+  }
+
+
+})
+
+.controller('DashConfirmCtrl', function($rootScope, $scope, $state, $window, $firebase) {
+  $scope.returnHome = function(){
     $state.go('dashboard.scan')
   }
 })
