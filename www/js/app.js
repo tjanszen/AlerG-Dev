@@ -67,6 +67,12 @@ angular.module('alerG', ['ionic', 'ngCordova', 'firebase', 'alerG.controllers', 
      });
    }
 
+   var URL = 'https://alerg.firebaseio.com/'
+   var userEmail = localStorage.userEmail;
+   userEmail = userEmail.replace(".", ",");
+
+   $rootScope.products = $firebase(new Firebase(URL + userEmail));
+
   });
 })
 

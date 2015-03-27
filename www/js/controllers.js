@@ -118,38 +118,41 @@ angular.module('alerG.controllers', [])
 
 
   $scope.testingScan = function(){
-    // Scan.scanning('024100788842')
-    Scan.scanning('044000027964')
+    Scan.scanning('041196891492')
+    // Scan.scanning('044000027964')
     .then(function(response){
       $rootScope.productBrand = response.data[0].brand;
       $rootScope.productName = response.data[0].product_name;
-      $rootScope.productImage = response.data[0].image_urls[0];
+
+      if(response.data[0].image_urls){
+        $rootScope.productImage = response.data[0].image_urls[0];
+      }
+      $rootScope.productUPC = '041196891492';
       //grab all of the products from the database
       $rootScope.ref.on("value", function(snapshot) {
         snapshot.forEach(function(data){
           //check to see if the UPC is in the database
-          if('044000027964' === data.val().upc){
+          if('041196891492' === data.val().upc){
             // console.log('does 024100788843 === ' + data.val().upc)
-            // console.log('the upc codes do match')
+            console.log('the upc codes do match')
             //check to see if the item has been reviewed and approved for Gluten Free Status
             if(data.val().checked){
-              //go to the state to display the Gluten Free Status
-              // console.log('the value of CHECKED IS ', data.val().checked);
+              // go to the state to display the Gluten Free Status
+              console.log('the value of CHECKED IS ', data.val().checked);
               $rootScope.productGF = data.val().gFree
               $state.go('dashboard.match');
               return true;
             } else{
               //let the user know this item is bring reviewed
-              // console.log('this item is being reviewed');
-              // console.log('the value of CHECKED IS ', data.val().checked);
+              console.log('this item is being reviewed');
+              console.log('the value of CHECKED IS ', data.val().checked);
               $state.go('dashboard.review');
               return true;
             };
           } else{
-            // console.log('the item is not in the database')
-            // console.log('does 024100788843 === ' + data.val().upc)
+            console.log('the item is not in the database')
+            console.log('does 044000027964 === ' + data.val().upc)
             $state.go('dashboard.check');
-
           }
 
 
@@ -196,7 +199,7 @@ angular.module('alerG.controllers', [])
                   return true;
                 };
               } else{
-                // console.log('the item is not in the database')
+                console.log('the item is not in the database')
                 // console.log('does 024100788843 === ' + data.val().upc)
                 $state.go('dashboard.check');
               }
@@ -208,23 +211,6 @@ angular.module('alerG.controllers', [])
       }, function(error) {
         // An error occurred
       })
-    });
-  }
-
-  var URL = 'https://alerg.firebaseio.com/'
-  var userEmail = localStorage.userEmail;
-  userEmail = userEmail.replace(".", ",");
-
-  $rootScope.products = $firebase(new Firebase(URL + userEmail));
-
-  $scope.saveProduct = function(){
-    console.log('MADE IT TO THE SAVEPRODUCT FUNCTION');
-    $rootScope.products.$add({
-      upc: $rootScope.productUPC,
-      brand: $rootScope.productBrand,
-      name: $rootScope.productName,
-      image: $rootScope.productImage,
-      gFree: $rootScope.productGF
     });
   }
 
@@ -253,7 +239,11 @@ angular.module('alerG.controllers', [])
 
 }])
 
-.controller('DashResutsCtrl', function($rootScope, $scope, $window, $firebase) {
+.controller('DashResutsCtrl', function($rootScope, $scope, $state, $window, $firebase) {
+
+  $scope.returnHome = function(){
+    $state.go('dashboard.match');
+  }
 
 })
 
@@ -270,7 +260,7 @@ angular.module('alerG.controllers', [])
 .controller('DashConfirmCtrl', function($rootScope, $scope, $state, $window, $firebase) {
 
   $scope.confirmProduct = function(){
-    console.log('we need to update the product with checked of', $rootScope.productGF)
+    console.log('we need to update the product with checked of', $rootScope.productGF);
     $rootScope.fb.$add({
       upc: $rootScope.productUPC,
       brand: $rootScope.productBrand,
@@ -283,8 +273,30 @@ angular.module('alerG.controllers', [])
   }
 })
 
-.controller('DashMatchCtrl', function($rootScope, $scope, $window, $firebase) {
+.controller('DashMatchCtrl', function($rootScope, $scope, $state, $window, $firebase) {
 
+  var URL = 'https://alerg.firebaseio.com/'
+  var userEmail = localStorage.userEmail;
+  userEmail = userEmail.replace(".", ",");
+
+  $rootScope.products = $firebase(new Firebase(URL + userEmail));
+
+  $scope.saveProduct = function(){
+    console.log('MADE IT TO THE SAVEPRODUCT FUNCTION');
+    console.log('the upc code is', $rootScope.productUPC);
+    $rootScope.products.$add({
+      upc: $rootScope.productUPC,
+      brand: $rootScope.productBrand,
+      name: $rootScope.productName,
+      image: $rootScope.productImage,
+      gFree: $rootScope.productGF
+    });
+    $state.go('dashboard.results');
+  }
+
+  $scope.returnHome = function(){
+    $state.go('dashboard.scan');
+  }
 })
 
 .controller('DashReviewCtrl', function($rootScope, $scope, $window, $firebase) {

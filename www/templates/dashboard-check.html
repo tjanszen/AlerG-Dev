@@ -12,21 +12,29 @@
         <p class='scan-name'>{{productName}}</p>
       </div>
   </div>
-  
-    <ul class='list'>
+
+  <button class="button button-block button-outline button-calm " ng-click="reviewProduct(true)">
+    <span class='scan-button-text'>Gluten Free</span>
+  </button>
+
+  <button class="button button-block button-outline button-calm " ng-click="reviewProduct(false)">
+    <span class='scan-button-text'>Not Gluten Free</span>
+  </button>
+
+    <!-- <ul class='list'>
       <li class="item item-checkbox">
         <label class="checkbox">
-         <input type="checkbox" ng-click='reviewProduct(true)'>
+         <input ng-model='checkbox1' type="checkbox" ng-click='reviewProduct(true)'>
        </label>
        Gluten Free
       </li>
       <li class="item item-checkbox">
         <label class="checkbox">
-         <input type="checkbox" ng-click='reviewProduct(false)'>
+         <input ng-model='checkbox2' type="checkbox" ng-click='reviewProduct(false)'>
        </label>
        NOT Gluten Free
       </li>
-    </ul>
+    </ul> -->
 
 
   <p>
