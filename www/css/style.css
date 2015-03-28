@@ -1,28 +1,21 @@
+/*
+Header-color: #b2b2b2
+Semi-Bold: #797979
+Global-white: #fff
+Global-blue: #11c1f3
+Global-false: #e94949
+Global-true: #42d176
+Twitter: #1dcaff
+Facebook: #3B5998
+Large Font Header: 26px
+
+
+*/
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'Open Sans', sans-serif;
-}
-
-/* Empty. Add your own CSS if you like */
-.margin {
-  margin-left: 9px;
-  margin-right: 9px;
-}
-.icon-actions {
-  font-size: 23px;
-}
-.checkbox {
-  vertical-align: middle;
-}
-.actions {
-  float: right;
-}
-.item-text-wrap {
-  overflow: auto;
-}
-.ion-checkmark-circled.icon-actions.margin{
-  margin-right: 35px;
 }
 
 /*Global Style*/
@@ -36,8 +29,16 @@ body {
   text-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
 }
 
+.global-btn-font{
+  color: #11c1f3;
+  font-size: 26px;
+  font-family: 'PT Sans', sans-serif;
+  letter-spacing:.1em;
+  text-transform: uppercase;
+}
 
-/* login and signup*/
+
+/* Signin and Signup*/
 
 .signin-up-image{
   text-align: center;
@@ -50,21 +51,12 @@ body {
 }
 
 .tab-nav.tabs {
-  background: white
+  background: #fff;
 }
 
 label.item.item-input.item-floating-label.signin-up {
   border: none;
-  border-bottom: 1px solid #b3b3b3;
-}
-
-i.icon.ion-lock-combination,
-i.icon.ion-person-add,
-span.tab-title.ng-binding{
-  color: black;
-}
-.form-signin-up{
-  margin-top: 0%;
+  border-bottom: 1px solid #b2b2b2;
 }
 
 span.input-label.has-input{
@@ -78,9 +70,9 @@ input.ng-pristine.ng-untouched.ng-valid {
 
 span.tab-title.ng-binding {
   font-size: 14px;
-  color: #b3b3b3;
+  color: #b2b2b2;
   padding-bottom: 5px;
-  border-bottom:1px solid #b3b3b3;
+  border-bottom:1px solid #b2b2b2;
 }
 
 .tab-item.tab-item-active span{
@@ -96,7 +88,7 @@ span.tab-title.ng-binding {
 /* Homepage */
 
 #home-wrapper{
-  background: #69e2f5;
+  background: #11c1f3;
 }
 
 #window-wrapper{
@@ -105,7 +97,7 @@ span.tab-title.ng-binding {
 
 .window-image-container{
   text-align: center;
-  background: #69e2f5;
+  background: #11c1f3;
 }
 
 .window-titles{
@@ -123,13 +115,13 @@ span.tab-title.ng-binding {
 }
 .scan-button-ion{
   font-size: 30px;
-  margin-top: 10px;s
+  margin-top: 10px;
 }
 .scan-button-text{
   font-size:24px;
 }
 
-#main-scan-btn{
+/*#main-scan-btn{
     margin-top: 70px;
 }
 
@@ -146,21 +138,21 @@ span.tab-title.ng-binding {
 #bookmark-fa{
   top: 15px;
   left: 150px;
-}
+}*/
 
-p.card-p{
+/*p.card-p{
   color: white;
   text-transform: uppercase;
-}
-
+}*/
+/*
 .card-images{
   width: 50px;
-}
+}*/
 
-.item.item-image{
+/*.item.item-image{
   padding: 20px 0px;
   position: relative;
-}
+}*/
 
 .scan-sign{
   position:absolute;
@@ -169,7 +161,7 @@ p.card-p{
   left:22%;
 }
 
-.social-share,
+/*.social-share,
 .save-button{
   display: block;
   margin: 0 auto;
@@ -182,19 +174,15 @@ p.card-p{
   display: block;
   text-align:center;
   font-size: 30px
-}
+}*/
 
-.item-image img:first-child, .item-image .list-img {
-  width: 50%;
-  vertical-align: middle;
-  padding: 20px 0;
-}
 
-.tab-item.tab-item-active i{
+
+/*.tab-item.tab-item-active i{
   color:#8c8c8c;
-}
+}*/
 
-/* Dashboad-check*/
+/* Review Page*/
 
 #check-title{
   color: #8c8c8c;
@@ -217,11 +205,17 @@ p.card-p{
   color: #e94949;
 }
 
-/*Dashboard-Match*/
+/*Match Page*/
 
 #match-list-card{
   /*border: 1px solid #8c8c8c;*/
   box-shadow: none;
+}
+
+.item-image img:first-child, .item-image .list-img {
+  width: 50%;
+  vertical-align: middle;
+  padding: 20px 0;
 }
 
 #large-product-image{
@@ -262,6 +256,22 @@ p.card-p{
   letter-spacing:.1em;
   transform: uppercase;
 }
+
+.social-share,
+.save-button{
+  display: block;
+  margin: 0 auto;
+  background: #fff;
+  border: none;
+}
+
+.ion-social-twitter,
+.ion-social-facebook{
+  display: block;
+  text-align:center;
+  font-size: 30px
+}
+
 
 #social-save-row{
   border: none;
@@ -316,6 +326,7 @@ p.card-p{
 #brand-name-review{
   color: #e94949;
 }
+
 /* Display Results Page */
 
 .results-wrapper{

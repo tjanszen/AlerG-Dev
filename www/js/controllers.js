@@ -125,29 +125,6 @@ angular.module('alerG.controllers', [])
       });
     }
 
-    $scope.isGlutenFree = function() {
-
-    }
-
-    $scope.sendTweet = function(){
-      console.log('MADE IT TO THE SENT TWEET FUNCTION');
-      $ionicPlatform.ready(function() {
-        $cordovaSocialSharing.shareViaTwitter('Checkout ' + $rootScope.productName + ' from ' + $rootScope.productBrand + '. It is Gluten Free! #Aler-G', $rootScope.productImage);
-      });
-    }
-
-    $scope.sendFacebook = function(){
-      $ionicPlatform.ready(function() {
-        $cordovaSocialSharing
-        .shareViaFacebook('Checkout ' + $rootScope.productName + ' from ' + $rootScope.productBrand + '. It is Gluten Free! #Aler-G', $rootScope.productImage)
-        .then(function(result) {
-          // Success!
-        }, function(err) {
-          // An error occurred. Show a message to the user
-        });
-      });
-    }
-
     $scope.goToFavorites = function() {
       $state.go('results')
     }
@@ -188,6 +165,10 @@ angular.module('alerG.controllers', [])
             $rootScope.userEmail = user.email;
             localStorage.setItem('userEmail', user.email);
             $window.location.href = ('#/home');
+            $scope.user = {
+               email: "",
+               password: ""
+            };
           }
           else {
             $rootScope.hide();
@@ -244,6 +225,10 @@ angular.module('alerG.controllers', [])
           $rootScope.userEmail = user.email;
           localStorage.setItem('userEmail', user.email);
           $window.location.href = ('#/home');
+          $scope.user = {
+             email: "",
+             password: ""
+          };
         }, function (error) {
           $rootScope.hide();
           if (error.code == 'INVALID_EMAIL') {
@@ -263,15 +248,15 @@ angular.module('alerG.controllers', [])
   }
 ])
 
-.controller('ResultsCtrl', function($rootScope, $scope, $state, $window, $firebase) {
+.controller('ResultsCtrl', ['$rootScope', '$scope', '$state', '$window', '$firebase', function($rootScope, $scope, $state, $window, $firebase) {
 
   $scope.returnHome = function(){
     $state.go('home');
   }
 
-})
+}])
 
-.controller('CheckCtrl', function($rootScope, $scope, $state, $window, $firebase, $ionicPlatform, $ionicPopup, $timeout, $ionicModal) {
+.controller('CheckCtrl', ['$rootScope', '$scope', '$state', '$window', '$firebase', '$ionicPlatform', '$ionicPopup', '$timeout', '$ionicModal', function($rootScope, $scope, $state, $window, $firebase, $ionicPlatform, $ionicPopup, $timeout, $ionicModal) {
 
   $ionicModal.fromTemplateUrl('templates/how.html', function($ionicModal) {
      $scope.how = $ionicModal;
@@ -301,16 +286,16 @@ angular.module('alerG.controllers', [])
   }
 
 
-})
+}])
 
-.controller('ConfirmCtrl', function($rootScope, $scope, $state, $window, $firebase, $ionicModal) {
+.controller('ConfirmCtrl', ['$rootScope', '$scope', '$state', '$window', '$firebase', '$ionicModal', function($rootScope, $scope, $state, $window, $firebase, $ionicModal) {
 
   $scope.returnHome = function(){
     $state.go('home')
   }
-})
+}])
 
-.controller('MatchCtrl', function($rootScope, $scope, $state, $window, $firebase, $ionicPlatform, $cordovaSocialSharing) {
+.controller('MatchCtrl', ['$rootScope', '$scope', '$state', '$window', '$firebase', '$ionicPlatform', '$cordovaSocialSharing', function($rootScope, $scope, $state, $window, $firebase, $ionicPlatform, $cordovaSocialSharing) {
 
   var URL = 'https://alerg.firebaseio.com/'
   var userEmail = localStorage.userEmail;
@@ -355,10 +340,10 @@ angular.module('alerG.controllers', [])
   }
 
 
-})
+}])
 
-.controller('ReviewCtrl', function($rootScope, $scope, $state, $window, $firebase) {
+.controller('ReviewCtrl', ['$rootScope', '$scope', '$state', '$window', '$firebase', function($rootScope, $scope, $state, $window, $firebase) {
  $scope.returnHome = function(){
    $state.go('home')
  }
-});
+}]);
