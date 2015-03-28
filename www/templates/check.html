@@ -1,0 +1,114 @@
+<ion-header-bar>
+  <button class="button button-clear" ng-click="returnHome()">
+    <i class="icon ion-home"></i>
+  </button>
+  <h1 class="title">ALERG</h1>
+  <button class="button button-clear" ng-click="logout()">
+    <i class="icon ion-android-exit"></i>
+  </button>
+</ion-header-bar>
+<ion-content  class="has-header padding" has-tabs="true" on-refresh="onRefresh()">
+  <h2 id='check-header'> HELP!</h2>
+  <p class='check-intro'>
+    The Gluten Free Community needs your help! You can add this product to our database by completing the follow:
+  </p>
+
+  <div class='row' class="steps-wrapper">
+    <div class="row step-container">
+      <div class="col col-25">
+        <img class='check-step-img' src="img/num/num1.svg" alt="" />
+      </div>
+      <div class="col col-75">
+        <p class='check-step-text'>
+          Check the box for a Certified Gluten Free label. <span ng-click='' id='check-instructions'> Click for instructions </span>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class='row' class="steps-wrapper">
+    <div class="row step-container">
+      <div class="col col-25">
+        <img class='check-step-img' src="img/num/num2.svg" alt="" />
+      </div>
+      <div class="col col-75">
+        <p class='check-step-text'>
+          Click either <span id='span-green'> Gluten Free </span> or <span id='span-red'> Gluten </span>.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class='row' class="steps-wrapper">
+    <div class="row step-container">
+      <div class="col col-25">
+        <img class='check-step-img' src="img/num/num3.svg" alt="" />
+      </div>
+      <div class="col col-75">
+        <p class='check-step-text'>
+          Give yourself a pat! You're helping the GF community!
+        </p>
+      </div>
+    </div>
+   </div>
+  </div>
+
+  <div id='yes-no-wrapper' class="row">
+    <div class="col yes-img-container" ng-click="confirmProduct(true)">
+      <span class='yes-no-titles'>gluten free</span>
+      <img class='yes-no-img' src="img/check/yes.svg" alt="" />
+    </div>
+    <div class="col no-img-container" ng-click="confirmProduct(false)">
+      <span class='yes-no-titles'>Gluten</span>
+      <img class='yes-no-img' src="img/check/no.svg" alt="" />
+    </div>
+  </div>
+
+</ion-content>
+
+
+
+
+<!-- <ion-header-bar>
+  <h1 class="title">ALERG</h1>
+  <button class="button button-clear" ng-click="logout()">
+    <i class="icon ion-android-exit"></i>
+  </button>
+</ion-header-bar>
+<ion-content  class="has-header padding" has-tabs="true" on-refresh="onRefresh()">
+
+  <div class="list card">
+    <h4 id='check-title'>We Need Your Help!</h4>
+    <p id='check-paragraph1' class='check-paragraphs'>
+      This item is not in AlerG Database. But you can add this to our database by checking the label and submitting!
+    </p>
+    <p class='check-paragraphs'>
+      <span class='check-steps'>Step 1:</span> Check the product for the <span>Gluten Free Certificate</span>
+    </p>
+    <p class='check-paragraphs'>
+      <span class='check-steps'>Step 2:</span> Click the option below!
+    </p>
+    <p class='check-paragraphs'>
+      <span class='check-steps'>Step 3:</span> AlerG will review and approve in ASAP!
+    </p>
+
+  </div>
+  <div class="list card">
+      <div class="item item-avatar">
+        <img class=scan-image src="{{productImage}}">
+        <h2 class='scan-brand'>{{productBrand}}</h2>
+        <p class='scan-name'>{{productName}}</p>
+      </div>
+  </div>
+
+  <button class="button button-block button-outline button-calm " ng-click="confirmProduct(true)">
+    <span class='scan-button-text'>Gluten Free</span>
+  </button>
+
+  <button class="button button-block button-outline button-calm " ng-click="confirmProduct(false)">
+    <span class='scan-button-text'>Not Gluten Free</span>
+  </button>
+
+  <button class="button button-block button-outline button-calm " ng-click="confirmProduct(false)">
+    <span class='scan-button-text'>I'm Not Sure</span>
+  </button>
+
+</ion-content> -->

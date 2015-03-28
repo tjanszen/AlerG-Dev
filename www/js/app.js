@@ -80,16 +80,19 @@ angular.module('alerG', ['ionic', 'ngCordova', 'firebase', 'alerG.controllers', 
 .config(function($stateProvider, $urlRouterProvider){
   $stateProvider
     .state('home', {url: '/home', templateUrl: 'templates/home.html', controller: 'HomeCtrl'})
+    .state('check', {url: '/check', templateUrl: 'templates/check.html', controller: 'CheckCtrl'})
+    .state('confirm', {url: '/confirm', templateUrl: 'templates/confirm.html', controller: 'ConfirmCtrl'})
+    .state('match', {url: '/match', templateUrl: 'templates/match.html', controller: 'MatchCtrl'})
+    .state('results', {url: '/results', templateUrl: 'templates/results.html', controller: 'ResultsCtrl'})
+    .state('review', {url: '/review', templateUrl: 'templates/in-review.html', controller: 'ReviewCtrl'})
 
     .state('auth', {url: "/auth", abstract: true, templateUrl: "templates/auth.html"})
     .state('auth.signin', {url: '/signin', views: {'auth-signin': {templateUrl: 'templates/auth-signin.html', controller: 'SignInCtrl'}}})
     .state('auth.signup', {url: '/signup',views: {'auth-signup': {templateUrl: 'templates/auth-signup.html', controller: 'SignUpCtrl'}}})
 
     .state('dashboard', {url: "/dashboard", abstract: true, templateUrl: "templates/dashboard.html"})
-    .state('dashboard.scan', {url: '/scan', views: {'dashboard-scan': {templateUrl: 'templates/dashboard-scan.html', controller: 'DashScanCtrl'}}})
     .state('dashboard.check', {url: '/check', views: {'dashboard-scan': {templateUrl: 'templates/dashboard-check.html', controller: 'DashCheckCtrl'}}})
     .state('dashboard.match', {url: '/match', views: {'dashboard-scan': {templateUrl: 'templates/dashboard-match.html', controller: 'DashMatchCtrl'}}})
-    .state('dashboard.review', {url: '/review', views: {'dashboard-scan': {templateUrl: 'templates/dashboard-review.html', controller: 'DashReviewCtrl'}}})
     .state('dashboard.confirm', {url: '/confirm', views: {'dashboard-scan': {templateUrl: 'templates/dashboard-confirm.html', controller: 'DashConfirmCtrl'}}})
 
     .state('dashboard.results', {url: '/results', views: {'dashboard-results': {templateUrl: 'templates/dashboard-results.html', controller: 'DashResutsCtrl'}}})

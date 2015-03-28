@@ -1,0 +1,24 @@
+<ion-header-bar>
+  <button class="button button-clear" ng-click="returnHome()">
+    <i class="icon ion-home"></i>
+  </button>
+  <h1 class="title">ALERG</h1>
+  <button class="button button-clear" ng-click="logout()">
+    <i class="icon ion-android-exit"></i>
+  </button>
+</ion-header-bar>
+<ion-content  class="has-header padding" has-tabs="true" on-refresh="onRefresh()">
+<h2 id='review-header'> Sorry!</h2>
+
+<p class='review-message'>
+  <span id='brand-name-review'>{{productBrand}} {{productName}} </span> has been submitted to the AlerG team for review. The team is working through hundreds of request and will approve the Gluten Free status ASAP {{productName}}
+</p>
+<p class='review-message'>
+  Thank you for your patience! Please keep scanning items and contributing to the fastest growing Gluten Free database!
+</p>
+<br>
+
+<button class="button button-block button-outline button-calm " ng-click="returnHome()">
+  <span class='scan-button-text'>Go Back!</span>
+</button>
+</ion-content>

@@ -291,6 +291,31 @@ p.card-p{
   color: #fff;
 }
 
+/* Review Page*/
+
+#review-header{
+  color: #e94949;
+  font-size: 26px;
+  font-family: 'PT Sans', sans-serif;
+  letter-spacing:.2em;
+  transform: uppercase;
+  text-align:center;
+  margin-top: 10%;
+}
+
+.review-message{
+  color: #8c8c8c;
+  font-size: 14px;
+  font-family: 'PT Sans', sans-serif;
+  letter-spacing:.1em;
+  transform: uppercase;
+  text-align:center;
+  margin-top: 10%;
+}
+
+#brand-name-review{
+  color: #e94949;
+}
 /* Display Results Page */
 
 .results-name,
@@ -319,4 +344,115 @@ p.card-p{
 
 #yes-gf{
   color: #42d176;
+}
+
+/*Check Page*/
+
+#check-header{
+  color: #e94949;
+  font-size: 30px;
+  font-family: 'PT Sans', sans-serif;
+  letter-spacing:.2em;
+  transform: uppercase;
+  text-align:center;
+  margin: 5% 0 5% 0;
+}
+
+.check-intro{
+  color: #8c8c8c;
+  font-size: 14px;
+  font-family: 'PT Sans', sans-serif;
+  letter-spacing:.1em;
+  margin-left: 5%;
+}
+
+.check-step-img{
+  width:3em;
+}
+
+.check-step-text{
+  color: #8c8c8c;
+  font-size: 14px;
+  font-family: 'PT Sans', sans-serif;
+  letter-spacing:.1em;
+}
+
+#check-instructions{
+  text-decoration: underline;
+}
+
+#span-green{
+  color:#42d176;
+}
+
+#span-red{
+  color: #e94949;
+}
+
+#yes-no-wrapper{
+  margin-top:5%;
+}
+
+.yes-img-container{
+  background: #42d176;
+}
+
+.yes-no-titles{
+  display: inherit;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 20px;
+  font-family: 'PT Sans', sans-serif;
+  letter-spacing:.1em;
+
+}
+
+.no-img-container{
+  background: #e94949;
+}
+
+.yes-no-img{
+  margin: 0 auto;
+  display: inherit;
+  width:50px;
+  padding: 1.5em 0;
+}
+
+/* FAQ Page*/
+
+#faq-header,
+#tc-header{
+  color: #8c8c8c;
+  font-size: 30px;
+  font-family: 'PT Sans', sans-serif;
+  letter-spacing:.2em;
+  transform: uppercase;
+  text-align:center;
+  margin: 5% 0 10% 0;
+
+}
+
+.faq-question-container{
+  border-bottom: 1px solid #c4c4c4;
+  margin-bottom:7%;
+}
+
+.faq-questions,
+.tc-statement{
+  color: #e94949;
+  font-size: 14px;
+  font-family: 'PT Sans', sans-serif;
+  letter-spacing:.1em;
+  transform: uppercase;
+  margin-left: 5%;
+}
+
+.faq-answer,
+.tc-text{
+  color: #8c8c8c;
+  font-size: 14px;
+  font-family: 'PT Sans', sans-serif;
+  letter-spacing:.1em;
+  margin-left: 5%;
 }

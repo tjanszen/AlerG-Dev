@@ -7,7 +7,7 @@
 <ion-content class="has-header padding" has-tabs="true" on-refresh="onRefresh()" id='home-wrapper'>
 
   <div id='window-wrapper' class="row">
-    <div class="col window-image-container">
+    <div class="col window-image-container" ng-click="faq.show()">
       <img class='window-images' src="img/home/help.svg" alt="" />
       <h5 class='window-titles'>FAQ</h5>
     </div>
@@ -17,7 +17,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col window-image-container" ng-click='testingScan()'>
+    <div class="col window-image-container" ng-click="modal.show()">
       <img class='window-images' src="img/home/important.svg" alt="" />
       <h5 class='window-titles'>T&C</h5>
     </div>
@@ -26,4 +26,5 @@
       <h5 class='window-titles'>SCAN</h5>
     </div>
   </div>
+  <h5 ng-click='testingScan()'>Test</h5>
 </ion-content>
