@@ -318,6 +318,15 @@ p.card-p{
 }
 /* Display Results Page */
 
+.results-wrapper{
+  border: none;
+  box-shadow: none;
+}
+
+.results-a-container{
+  border-bottom: 1px solid #c1c1c1;
+}
+
 .results-name,
 .results-upc,
 .results-gf{
@@ -327,6 +336,24 @@ p.card-p{
 
 .results-brand{
   text-align:left;
+  color: #797979;
+  font-size: 14px;
+  font-family: 'PT Sans', sans-serif;
+  letter-spacing:.1em;
+  text-transform: uppercase;
+}
+
+.results-name{
+  text-align:left;
+  color: #8c8c8c !important;
+  font-size: 10px;
+  font-family: 'PT Sans', sans-serif;
+  letter-spacing:.1em;
+  text-transform: uppercase;
+}
+
+.results-th-img{
+  width: 2em;
 }
 
 .scan-brand,

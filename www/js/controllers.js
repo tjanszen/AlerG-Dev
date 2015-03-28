@@ -271,7 +271,17 @@ angular.module('alerG.controllers', [])
 
 })
 
-.controller('CheckCtrl', function($rootScope, $scope, $state, $window, $firebase, $ionicPlatform, $ionicPopup, $timeout) {
+.controller('CheckCtrl', function($rootScope, $scope, $state, $window, $firebase, $ionicPlatform, $ionicPopup, $timeout, $ionicModal) {
+
+  $ionicModal.fromTemplateUrl('templates/how.html', function($ionicModal) {
+     $scope.how = $ionicModal;
+   }, {
+     // Use our scope for the scope of the modal to keep it simple
+     scope: $scope,
+     // The animation we want to use for the modal entrance
+     animation: 'slide-in-up'
+
+   });
 
   $scope.confirmProduct = function(value){
     $rootScope.productGF = value;
@@ -289,7 +299,8 @@ angular.module('alerG.controllers', [])
 
 })
 
-.controller('ConfirmCtrl', function($rootScope, $scope, $state, $window, $firebase) {
+.controller('ConfirmCtrl', function($rootScope, $scope, $state, $window, $firebase, $ionicModal) {
+
   $scope.returnHome = function(){
     $state.go('home')
   }
