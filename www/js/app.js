@@ -90,12 +90,12 @@ angular.module('alerG', ['ionic', 'ngCordova', 'firebase', 'alerG.controllers', 
     .state('auth.signin', {url: '/signin', views: {'auth-signin': {templateUrl: 'templates/auth-signin.html', controller: 'SignInCtrl'}}})
     .state('auth.signup', {url: '/signup',views: {'auth-signup': {templateUrl: 'templates/auth-signup.html', controller: 'SignUpCtrl'}}})
 
-    .state('dashboard', {url: "/dashboard", abstract: true, templateUrl: "templates/dashboard.html"})
-    .state('dashboard.check', {url: '/check', views: {'dashboard-scan': {templateUrl: 'templates/dashboard-check.html', controller: 'DashCheckCtrl'}}})
-    .state('dashboard.match', {url: '/match', views: {'dashboard-scan': {templateUrl: 'templates/dashboard-match.html', controller: 'DashMatchCtrl'}}})
-    .state('dashboard.confirm', {url: '/confirm', views: {'dashboard-scan': {templateUrl: 'templates/dashboard-confirm.html', controller: 'DashConfirmCtrl'}}})
+    // .state('dashboard', {url: "/dashboard", abstract: true, templateUrl: "templates/dashboard.html"})
+    // .state('dashboard.check', {url: '/check', views: {'dashboard-scan': {templateUrl: 'templates/dashboard-check.html', controller: 'DashCheckCtrl'}}})
+    // .state('dashboard.match', {url: '/match', views: {'dashboard-scan': {templateUrl: 'templates/dashboard-match.html', controller: 'DashMatchCtrl'}}})
+    // .state('dashboard.confirm', {url: '/confirm', views: {'dashboard-scan': {templateUrl: 'templates/dashboard-confirm.html', controller: 'DashConfirmCtrl'}}})
 
-    .state('dashboard.results', {url: '/results', views: {'dashboard-results': {templateUrl: 'templates/dashboard-results.html', controller: 'DashResutsCtrl'}}})
+    // .state('dashboard.results', {url: '/results', views: {'dashboard-results': {templateUrl: 'templates/dashboard-results.html', controller: 'DashResutsCtrl'}}})
 
     $urlRouterProvider.otherwise('/auth/signin');
 });

@@ -296,6 +296,10 @@ angular.module('alerG.controllers', [])
     $state.go('confirm')
   }
 
+  $scope.returnHome = function(){
+    $state.go('home')
+  }
+
 
 })
 
