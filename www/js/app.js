@@ -57,7 +57,7 @@ angular.module('alerG', ['ionic', 'ngCordova', 'firebase', 'alerG.controllers', 
        } else if (user) {
          // user authenticated with Firebase
          $rootScope.userEmail = user.email;
-         $window.location.href = ('#/dashboard/scan');
+         $window.location.href = ('#/home');
        } else {
          // user is logged out
          $rootScope.userEmail = null;
@@ -79,9 +79,12 @@ angular.module('alerG', ['ionic', 'ngCordova', 'firebase', 'alerG.controllers', 
 
 .config(function($stateProvider, $urlRouterProvider){
   $stateProvider
+    .state('home', {url: '/home', templateUrl: 'templates/home.html', controller: 'HomeCtrl'})
+
     .state('auth', {url: "/auth", abstract: true, templateUrl: "templates/auth.html"})
     .state('auth.signin', {url: '/signin', views: {'auth-signin': {templateUrl: 'templates/auth-signin.html', controller: 'SignInCtrl'}}})
     .state('auth.signup', {url: '/signup',views: {'auth-signup': {templateUrl: 'templates/auth-signup.html', controller: 'SignUpCtrl'}}})
+
     .state('dashboard', {url: "/dashboard", abstract: true, templateUrl: "templates/dashboard.html"})
     .state('dashboard.scan', {url: '/scan', views: {'dashboard-scan': {templateUrl: 'templates/dashboard-scan.html', controller: 'DashScanCtrl'}}})
     .state('dashboard.check', {url: '/check', views: {'dashboard-scan': {templateUrl: 'templates/dashboard-check.html', controller: 'DashCheckCtrl'}}})

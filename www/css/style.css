@@ -95,19 +95,30 @@ span.tab-title.ng-binding {
 
 /* Homepage */
 
+#home-wrapper{
+  background: #69e2f5;
+}
+
 #window-wrapper{
-  margin-top: 50px;
+  margin-top: 25%;
 }
 
 .window-image-container{
   text-align: center;
-  background: #b2b2b2;
-  border: 1px dashed #fff;
+  background: #69e2f5;
+}
+
+.window-titles{
+  color: #fff;
+  font-size: 26px;
+  font-family: 'PT Sans', sans-serif;
+  letter-spacing:.1em;
+  transform: uppercase;
 }
 
 .window-images{
-  width: 20vw;
-  padding: 30px 0;
+  width: 30vw;
+  padding: 0;
   margin: 0 auto;
 }
 .scan-button-ion{
@@ -158,14 +169,6 @@ p.card-p{
   left:22%;
 }
 
-.item p.scan-sign-text-false{
-  color:#e94949;
-}
-
-.item p.scan-sign-text-true{
-  color:#42d176;
-}
-
 .social-share,
 .save-button{
   display: block;
@@ -175,9 +178,7 @@ p.card-p{
 }
 
 .ion-social-twitter,
-.ion-social-facebook,
-.ion-social-instagram,
-.ion-code-download{
+.ion-social-facebook{
   display: block;
   text-align:center;
   font-size: 30px
@@ -190,7 +191,7 @@ p.card-p{
 }
 
 .tab-item.tab-item-active i{
-  color:#11c1f3;
+  color:#8c8c8c;
 }
 
 /* Dashboad-check*/
@@ -214,6 +215,80 @@ p.card-p{
 }
 .check-steps{
   color: #e94949;
+}
+
+/*Dashboard-Match*/
+
+#match-list-card{
+  /*border: 1px solid #8c8c8c;*/
+  box-shadow: none;
+}
+
+#large-product-image{
+  border-top: 1px solid #8c8c8c;
+  border-bottom: 1px solid #8c8c8c;
+}
+
+#match-product-brand{
+  text-align:center;
+  color: #8c8c8c;
+  font-size: 26px;
+  font-family: 'PT Sans', sans-serif;
+  letter-spacing:.1em;
+  transform: uppercase;
+}
+
+#match-product-name{
+  text-align:center;
+  color: #8c8c8c;
+  font-size: 20px;
+  font-family: 'PT Sans', sans-serif;
+  letter-spacing:.1em;
+  transform: uppercase;
+}
+
+.item p.scan-sign-text-false{
+  color:#e94949;
+  font-size: 14px;
+  font-family: 'PT Sans', sans-serif;
+  letter-spacing:.1em;
+  transform: uppercase;
+}
+
+.item p.scan-sign-text-true{
+  color:#42d176;
+  font-size: 14px;
+  font-family: 'PT Sans', sans-serif;
+  letter-spacing:.1em;
+  transform: uppercase;
+}
+
+#social-save-row{
+  border: none;
+}
+
+#save-product-btn{
+  color: #8c8c8c;
+  font-size: 26px;
+  font-family: 'PT Sans', sans-serif;
+  letter-spacing:.1em;
+  transform: uppercase;
+}
+
+#twitter-wrapper{
+  background:#1dcaff;
+}
+
+.ion-social-twitter{
+  color: #fff;
+}
+
+#facebook-wrapper{
+  background:#3B5998;
+}
+
+.ion-social-facebook{
+  color: #fff;
 }
 
 /* Display Results Page */

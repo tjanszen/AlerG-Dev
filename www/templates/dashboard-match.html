@@ -8,36 +8,52 @@
   </button>
 </ion-header-bar>
 <ion-content  class="has-header padding" has-tabs="true" on-refresh="onRefresh()">
-  <div class="list card">
-      <div class="item item-avatar">
-        <img class=scan-image src="{{productImage}}">
-        <h2 class='scan-brand'>{{productBrand}}</h2>
-        <p class='scan-name'>{{productName}}</p>
+  <div id='match-list-card' class="list card">
+      <div id='product-name-and-photo' class="item">
+        <h2 id='match-product-brand' class='scan-brand'>{{productBrand}}</h2>
+        <p id='match-product-name' class='scan-name'>{{productName}}</p>
       </div>
 
-      <div class="item item-image">
+      <div id='large-product-image' class="item item-image">
         <img src="{{productImage}}" alt="" />
         <img class='scan-sign' ng-show='productGF' ng-src='http://www.clipartbest.com/cliparts/BdT/6Xx/BdT6XxLi9.png'/>
         <img class='scan-sign' ng-show='!productGF' ng-src='http://www.clker.com/cliparts/6/S/W/2/g/t/transparent-red-no-circle-hi.png'/>
         <p class='scan-sign-text-false' ng-show='!productGF'>NOT GLUTEN FREE</p>
         <p class='scan-sign-text-true' ng-show='productGF'>GLUTEN FREE</p>
       </div>
-      <div class="row">
-        <div class="col">
+      <!-- <div class="row" id='social-save-row'>
+        <div class="col" id='twitter-wrapper'>
           <button class="button social-share" ng-click='sendTweet()'>
             <i class='ion-social-twitter'></i>
           </button>
         </div>
-        <div class="col">
-          <button class="button save-button" ng-click='saveProduct()'>
+        <div class="col" id='save-wrapper'>
+          <button id='save-product-btn' class="button save-button" ng-click='saveProduct()'>
             SAVE
           </button>
         </div>
-        <div class="col">
+        <div class="col" id='facebook-wrapper'>
           <button class="button social-share" ng-click='sendFacebook()'>
             <i class='ion-social-facebook'></i>
           </button>
         </div>
-      </div>
+      </div> -->
+  </div>
+  <div class="row" id='social-save-row'>
+    <div class="col">
+      <button class="button social-share" ng-click='sendTweet()' id='twitter-wrapper'>
+        <i class='ion-social-twitter'></i>
+      </button>
+    </div>
+    <div class="col" id='save-wrapper'>
+      <button id='save-product-btn' class="button save-button" ng-click='saveProduct()'>
+        SAVE
+      </button>
+    </div> 
+    <div class="col">
+      <button class="button social-share" ng-click='sendFacebook()' id='facebook-wrapper'>
+        <i class='ion-social-facebook'></i>
+      </button>
+    </div>
   </div>
 </ion-content>
